@@ -1,2 +1,12 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
+<h2>投稿詳細</h2>
+
+
+<%= attachment_image_tag @post, :main_image, :fill, 300, 300 %>
+<h4>タイトル</h4>
+<%= @post.post_title %>
+<h4>内容</h4>
+<%= simple_format(@post.post_text) %>
+
+<%= link_to '編集', edit_post_path %>
+<%= link_to '削除', post_path(@post.id), method: :delete, data: { confirm: '本当によろしいですか？'} %>
