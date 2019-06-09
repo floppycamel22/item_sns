@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>ユーザー詳細</h2>
+
+
+<%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
+<h4>ユーザーネーム</h4>
+<%= @user.user_name %>
+<h4>プロフィール</h4>
+<%= @user.profile %>
+
+<%= link_to '編集', edit_user_path %>

@@ -1,2 +1,18 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<%= form_for(@user) do |f| %>
+<div class="field">
+	<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpeg", size:'60x60' %>
+	<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+</div>
+
+<div class="field">
+	<%= f.label :name, class: "name" %>
+	<%= f.text_field :user_name %>
+</div>
+
+<div class="field">
+ 	<%= f.text_area :profile %>
+</div>
+
+<%= f.submit '完了' %>
+<% end %>

@@ -1,23 +1,41 @@
-<header>
-<div class="logo">
-	<h2>item</h2>
-</div>
-
-
-
-<% if user_signed_in? %>
-<nav>
-	<li><%= link_to 'ホーム', root_path %></li>
-	<li><%= link_to 'マイページ', '#' %></li>
-	<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,  data: {confirm:'ログアウトしますか？'} %></li>
-</nav>
-<% else %>
-<nav>
-	<ul>
-		<li><%= link_to 'ホーム', root_path %></li>
-		<li><%= link_to '新規登録', new_user_registration_path %></li>
-		<li><%= link_to 'ログイン', new_user_session_path %></li>
-	</ul>
-</nav>
-<% end %>
+<header class="navbar navbar-fixed-top navbar-default">
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<div id="logo">
+				<h2>item</h2>
+			</div>
+		</div>
+		<div class='col-xs-5'>
+			<dl class="form-group col-xs-12 col-md-offset-1">
+				<%= search_form_for @q, url: root_path do |f| %>
+					<dt><%= f.text_field :post_title_cont, class: "form-control"%></dt>
+					<dd><%= button_tag(class: 'search-btn') do %>
+						<%= content_tag :span, "" ,class: "glyphicon glyphicon-search" %>
+						<% end %>
+					</dd>
+				<% end %>
+			</dl>
+		</div>
+		<div class="col-xs-5">
+			<% if user_signed_in? %>
+			<nav>
+				<ul class="header-list nav navbar-nav navbar-right">
+					<li><%= link_to 'ホーム', root_path %></li>
+					<li><%= link_to 'マイページ', user_path(current_user) %></li>
+					<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,  data: {confirm:'ログアウトしますか？'} %></li>
+				</ul>
+			</nav>
+			<% else %>
+			<nav>
+				<ul class="header-list nav navbar-nav navbar-right">
+					<li><%= link_to 'ホーム', root_path %></li>
+					<li><%= link_to '新規登録', new_user_registration_path %></li>
+					<li><%= link_to 'ログイン', new_user_session_path %></li>
+				</ul>
+			</nav>
+			<% end %>
+		</div>
+	</div>
+	</div>
 </header>

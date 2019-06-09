@@ -1,2 +1,16 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+	<nav class="row row-eq-height">
+		<ul class="card">
+		<% @users.each do |user| %>
+				<li class="user-list">
+					<%= link_to user_path(user.id) do %>
+					<%= attachment_image_tag user, :profile_image, :fill, 250, 250, fallback: "no_image.jpeg", size:'250x250', class:"card-img-top profile-thumb img-circle" %>
+					<% end %>
+					<div class="card-body inner-box">
+						<h4 class="card-text"><%= user.user_name %></h4>
+					</div>
+				</li>
+		<% end %>
+		</ul>
+	</nav>
+</div>
