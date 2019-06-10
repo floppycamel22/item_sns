@@ -7,6 +7,35 @@
 <%= @post.post_title %>
 <h4>内容</h4>
 <%= simple_format(@post.post_text) %>
+<% if @post.favorited_by?(current_user) %>
+	<p>
+		<%= link_to post_favorites_path(@post, from: 'show'), method: :delete do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+		<% end %>
+		<%= @post.favorites.count %>いいね
+	</p>
+<% else %>
+	<p>
+		<%= link_to post_favorites_path(@post, from: 'show'), method: :post do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;"></span>
+		 <% end %>
+		 <%= @post.favorites.count %>いいね
+	</p>
+<% end %>
+
+<%= @post.post_comments.count %>
+
+<% @post.post_comments.each do |post_comment| %>
+	<%= attachment_image_tag post_comment.user, :profile_image,  :fill, 60, 60, fallback:"no_image.jpeg", size:'60x60'  %>
+	<%= post_comment.user.user_name %>
+	<%= post_comment.created_at.strftime('%Y/%m/%d') %>
+	<%= post_comment.comment %>
+<% end %>
+
+<%= form_for [@post,@post_comment] do |f| %>
+	<%= f.text_area :comment, rows:'5' %>
+	<%= f.submit "コメント" %>
+<% end %>
 
 <%= link_to '編集', edit_post_path %>
 <%= link_to '削除', post_path(@post.id), method: :delete, data: { confirm: '本当によろしいですか？'} %>
