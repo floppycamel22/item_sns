@@ -5,7 +5,6 @@ class FavoritesController < ApplicationController
 	def create
 		favorite = current_user.favorites.new(post_id: params[:post_id])
 		favorite.save
-		redirect_to post_path(post.id)
 	end
 
 	def destroy

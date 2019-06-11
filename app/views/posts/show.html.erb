@@ -10,17 +10,25 @@
 			    <%= render partial: 'favorites/favorites', locals: { post: @post} %>
 			</div>
 
-			<%= @post.post_comments.count %>
-
-			<% @post.post_comments.each do |post_comment| %>
-				<%= attachment_image_tag post_comment.user, :profile_image,  :fill, 60, 60, fallback:"no_image.jpeg", size:'60x60'  %>
-				<%= post_comment.user.user_name %>
-				<%= post_comment.created_at.strftime('%Y/%m/%d') %>
-				<%= post_comment.comment %>
-			<% end %>
-
+			<div class="hidden_box">
+			    <label class="label-hover" for="label1"><%= @post.post_comments.count %>件のコメントを表示</label>
+			    <input type="checkbox" id="label1"/>
+			    <div class="hidden_show">
+					<% @post.post_comments.each do |post_comment| %>
+						<li class="comment-list" style="margin-top: 5px;">
+							<div id="comment-text">
+								<%= link_to user_path(post_comment.user.id), style:"color: #000080;" do %>
+									<p><%= attachment_image_tag post_comment.user, :profile_image,  :fill, 30, 30, fallback:"no_image.jpeg", size:'30x30', class:"card-img-top profile-thumb img-circle" %>   <%= post_comment.user.user_name %></p>
+								<% end %>
+								<p><%= simple_format(post_comment.comment) %></p>
+								<p><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+							</div>
+						</li>
+					<% end %>
+				</div>
+			</div>
 			<%= form_for [@post,@post_comment] do |f| %>
-				<%= f.text_area :comment, rows:'5' %>
+				<%= f.text_area :comment, :size => "85x4" %>
 				<%= f.submit "コメント" %>
 			<% end %>
 			<% if @post.user == current_user %>
