@@ -1,0 +1,12 @@
+
+<% if @post.favorited_by?(current_user) %>
+	<p><%= link_to post_favorites_path(@post), method: :delete, remote: true do %>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @post.favorites.count %>いいね</p>
+		<% end %>
+<% else %>
+		<p><%= link_to post_favorites_path(@post), method: :post, remote: true do %>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;"></span>
+			<%= @post.favorites.count %>いいね</p>
+		 <% end %>
+<% end %>

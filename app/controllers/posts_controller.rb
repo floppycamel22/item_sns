@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = @q.result
+    @users = User.all
   end
 
   def show

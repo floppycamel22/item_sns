@@ -1,16 +1,16 @@
 <div class="container">
 	<nav class="row row-eq-height">
 		<ul class="card">
-		<% @users.each do |user| %>
+			<% @users.each do |user| %>
 				<li class="user-list">
 					<%= link_to user_path(user.id) do %>
-					<%= attachment_image_tag user, :profile_image, :fill, 250, 250, fallback: "no_image.jpeg", size:'250x250', class:"card-img-top profile-thumb img-circle" %>
+						<%= attachment_image_tag user, :profile_image, :fill, 250, 250, fallback: "no_image.jpeg", size:'250x250', class:"card-img-top profile-thumb img-circle" %>
 					<% end %>
 					<div class="card-body inner-box">
 						<h4 class="card-text"><%= user.user_name %></h4>
 					</div>
 				</li>
-		<% end %>
+			<% end %>
 		</ul>
 	</nav>
 </div>

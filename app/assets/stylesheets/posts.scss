@@ -9,6 +9,25 @@
 .post-list {
 	list-style: none;
 	float: left;
-	margin: 10px;
-	border: 1px solid #ccc;
+	margin: 12px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 1px 1px #DDDDDD;
+}
+
+label{
+	padding: 5px 0 0 5px;
+}
+
+.post-show {
+	margin-bottom: 20px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 1px 1px #DDDDDD;
+}
+
+.post-text {
+	margin: 15px;
 }

@@ -1,33 +1,19 @@
 <div class="container">
-	<h2>post.all</h2>
 	<nav class="row row-eq-height">
 		<ul class="card">
-			<% @posts.each do |posts| %>
+			<% @posts.reverse.each do |posts| %>
+				<%= link_to post_path(posts.id),style:"color: #000080;" do %>
 				<li class="post-list">
-					<%= link_to post_path(posts.id) do %>
-						<%= attachment_image_tag posts, :main_image, :fill, 250, 250 %>
-					<% end %>
+					<p style="margin: 7px;"><%= attachment_image_tag posts.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg", size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= posts.user.user_name %></p>
+						<%= attachment_image_tag posts, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
 					<div class="card-body inner-box">
-						<h4 class="card-text">タイトル</h4>
-						<p class="card-text"><%= posts.post_title %></p>
-						<% if posts.favorited_by?(current_user) %>
-							<label><p>
-								<%= link_to post_favorites_path(posts), method: :delete, remote: true do %>
-									<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-								<% end %>
-								<%= posts.favorites.count %>いいね
-							</p></label>
-						<% else %>
-							<label>
-								<p><%= link_to post_favorites_path(posts), method: :post, remote: true do %>
-									<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;"></span>
-								 <% end %>
-								 <%= posts.favorites.count %>いいね</p>
-							</label>
-						<% end %>
-						<label><p><%= "#{posts.post_comments.count}" %>コメント</p></label>
+						<strong><h4 class="card-text" style="padding-left: 20px;"><%= posts.post_title %></h4></strong>
+						<p style="margin-left: 18px"><label><%= posts.favorites.count %>いいね</label>
+						<label><%= "#{posts.post_comments.count}" %>コメント</label>
+						<label><%= posts.created_at.strftime('%Y/%m/%d') %></label></p>
 					</div>
 				</li>
+				<% end %>
 			<% end %>
 		</ul>
 	</nav>
