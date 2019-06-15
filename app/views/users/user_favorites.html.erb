@@ -1,0 +1,23 @@
+
+<div class="container">
+	<nav class="row row-eq-height">
+		<ul class="card">
+			<% @favorites.reverse.each do |favorite| %>
+				<%= link_to post_path(favorite.post.id),style:"color: #000080;" do %>
+				<li class="post-list">
+					<p style="margin: 7px;">
+						<%= attachment_image_tag favorite.post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
+							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= favorite.post.user.user_name %>
+					</p>
+						<%= attachment_image_tag favorite.post, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
+					<div class="card-body inner-box">
+						<h4 class="card-text" style="padding-left: 20px;"><%= favorite.post.post_title %></h4>
+						<p class="post-date"><label><%= "#{favorite.post.post_comments.count}" %>コメント</label>
+						<label><%= favorite.created_at.strftime('%Y/%m/%d') %></label></p>
+					</div>
+				</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</nav>
+</div>

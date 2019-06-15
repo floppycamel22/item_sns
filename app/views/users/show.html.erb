@@ -4,7 +4,41 @@
 <%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
 <h4>ユーザーネーム</h4>
 <%= @user.user_name %>
+<section class="following">
+    <%= render 'users/following' %>
+</section>
+<%= render 'users/follow_form' %>
 <h4>プロフィール</h4>
 <%= @user.profile %>
 
+ <%= link_to 'Myいいね', user_user_favorites_path(@user.id) %>
+<% if @user == current_user %>
 <%= link_to '編集', edit_user_path %>
+<% end %>
+
+
+<div class="container">
+	<nav class="row row-eq-height">
+		<ul class="card">
+			<% @posts.reverse.each do |post| %>
+				<%= link_to post_path(post.id),style:"color: #000080;" do %>
+				<li class="post-list">
+					<p style="margin: 7px;"><%= attachment_image_tag post.user,
+												:profile_image, :fill, 30, 30, fallback: "no_image.jpeg", size:'30x30',
+												class:"card-img-top profile-thumb img-circle" %>  <%= post.user.user_name %>
+					</p>
+						<%= attachment_image_tag post, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
+					<div class="card-body inner-box">
+						<strong><h4 class="card-text" style="padding-left: 20px;"><%= post.post_title %></h4></strong>
+						<p class="post-date"><label id="favorite_count"><%= post.favorites.count %>いいね</label>
+						<label><%= "#{post.post_comments.count}" %>コメント</label>
+						<label><%= post.created_at.strftime('%Y/%m/%d') %></label></p>
+					</div>
+				</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</nav>
+</div>
+
+

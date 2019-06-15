@@ -1,7 +1,12 @@
 
 <div class="container">
 	<div class="card col-md-offset-1 post-show" style="width: 670px;">
-		<p class="post-text" style="font-size: 18px;"><%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg", size:'60x60', class:"card-img-top profile-thumb img-circle" %>    <%= @post.user.user_name %></p>
+		<%= link_to user_path(@post.user.id), style:"text-decoration: none;" do %>
+		<p class="post-text" style="font-size: 18px;">
+			<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg",
+				size:'60x60', class:"card-img-top profile-thumb img-circle" %>    <%= @post.user.user_name %>
+		</p>
+		<% end %>
 		<%= attachment_image_tag @post, :main_image, :fill, 650, 400, style:" margin: 0 10px 5px 10px;" %>
 		<div class="card-body inner-box post-text">
 			<h3><%= @post.post_title %></h3>
@@ -18,7 +23,10 @@
 						<li class="comment-list" style="margin-top: 5px;">
 							<div id="comment-text">
 								<%= link_to user_path(post_comment.user.id), style:"color: #000080;" do %>
-									<p><%= attachment_image_tag post_comment.user, :profile_image,  :fill, 30, 30, fallback:"no_image.jpeg", size:'30x30', class:"card-img-top profile-thumb img-circle" %>   <%= post_comment.user.user_name %></p>
+									<p><%= attachment_image_tag post_comment.user,
+										   :profile_image,  :fill, 30, 30, fallback:"no_image.jpeg", size:'30x30',
+										   class:"card-img-top profile-thumb img-circle" %>   <%= post_comment.user.user_name %>
+									</p>
 								<% end %>
 								<p><%= simple_format(post_comment.comment) %></p>
 								<p><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
