@@ -1,6 +1,6 @@
 
 <div class="container">
-	<div class="card col-md-offset-1 post-show" style="width: 670px;">
+	<div class="card col-md-offset-2 post-show" style="width: 670px;">
 		<%= link_to user_path(@post.user.id), style:"text-decoration: none;" do %>
 		<p class="post-text" style="font-size: 18px;">
 			<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg",
@@ -9,11 +9,21 @@
 		<% end %>
 		<%= attachment_image_tag @post, :main_image, :fill, 650, 400, style:" margin: 0 10px 5px 10px;" %>
 		<div class="card-body inner-box post-text">
-			<h3><%= @post.post_title %></h3>
+			<section id="post-title">
+				<label><h3><strong><%= @post.post_title %></strong></h3></label>
+				<label style="float: right; margin: 15px 10px 0 0;"><button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">フォルダ保存(仮)</button></label>
+				<div id="con1" class="modal-content">
+					<h2>フォルダ名クリックで保存できます</h2>
+					<% @folders.each do |folder| %>
+				    	<li><h3><%= link_to "#{folder.folder_name}", post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3></li>
+				    <% end %>
+				    <p><a class="modal-close">閉じる</a></p>
+				</div>
+			</section>
 			<p><%= simple_format(@post.post_text) %></p>
-			<div id="favorites_buttons_<%= @post.id %>">
-			    <%= render partial: 'favorites/favorites', locals: { post: @post} %>
-			</div>
+				<div id="favorites_buttons_<%= @post.id %>" class="favorites-box">
+			    	<%= render partial: 'favorites/favorites', locals: { post: @post} %>
+				</div>
 
 			<div class="hidden_box">
 			    <label class="label-hover" for="label1"><%= @post.post_comments.count %>件のコメントを表示</label>

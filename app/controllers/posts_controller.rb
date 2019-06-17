@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   def show
   	@post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @user = current_user
+    # @folders = @user.folders.where(folder_id: @user.id)
+    @folders = @user.folders.where(params[:folder_id])
   end
 
   def edit
