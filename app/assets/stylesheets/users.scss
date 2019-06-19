@@ -19,3 +19,31 @@
 .inner-box {
 	height: 100%;
 }
+
+
+.form-user.style-1 {
+  background-color: #ffffff;
+  border: 1px solid #ecf0f1;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px #DDDDDD;
+}
+
+.field {
+	margin: 20px;
+}
+
+.field-form {
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+input::placeholder {
+  color: #CCCCCC;
+}
+
+
+.form-header-title {
+	font-family: 'serif';
+}

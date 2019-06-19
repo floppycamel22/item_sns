@@ -11,19 +11,21 @@
 		<div class="card-body inner-box post-text">
 			<section id="post-title">
 				<label><h3><strong><%= @post.post_title %></strong></h3></label>
-				<label style="float: right; margin: 15px 10px 0 0;"><button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">フォルダ保存(仮)</button></label>
-				<div id="con1" class="modal-content">
-					<h2>フォルダ名クリックで保存できます</h2>
-					<% @folders.each do |folder| %>
-				    	<li><h3><%= link_to "#{folder.folder_name}", post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3></li>
-				    <% end %>
-				    <p><a class="modal-close">閉じる</a></p>
-				</div>
+				<% if user_signed_in? %>
+					<label style="float: right; margin: 15px 10px 0 0;"><button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">この投稿を保存</button></label>
+					<div id="con1" class="modal-content">
+						<h4>フォルダ名選択</h4>
+						<% @folders.each do |folder| %>
+					    	<li><h3><%= link_to "#{folder.folder_name}", post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3></li>
+					    <% end %>
+					<p><a class="modal-close">閉じる</a></p>
+					</div>
+				<% end %>
 			</section>
 			<p><%= simple_format(@post.post_text) %></p>
-				<div id="favorites_buttons_<%= @post.id %>" class="favorites-box">
-			    	<%= render partial: 'favorites/favorites', locals: { post: @post} %>
-				</div>
+			<div id="favorites_buttons_<%= @post.id %>" class="favorites-box">
+		    	<%= render partial: 'favorites/favorites', locals: { post: @post} %>
+			</div>
 
 			<div class="hidden_box">
 			    <label class="label-hover" for="label1"><%= @post.post_comments.count %>件のコメントを表示</label>
@@ -45,9 +47,11 @@
 					<% end %>
 				</div>
 			</div>
-			<%= form_for [@post,@post_comment] do |f| %>
-				<%= f.text_area :comment, :size => "85x4" %>
-				<%= f.submit "コメント" %>
+			<% if user_signed_in? %>
+				<%= form_for [@post,@post_comment] do |f| %>
+					<%= f.text_area :comment, :size => "85x4" %>
+					<%= f.submit "コメント" %>
+				<% end %>
 			<% end %>
 			<% if @post.user == current_user %>
 				<%= link_to '編集', edit_post_path %>

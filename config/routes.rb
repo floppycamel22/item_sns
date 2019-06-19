@@ -6,14 +6,18 @@ Rails.application.routes.draw do
   		get :following, :followers
   	end
     get '/:id/user_favorites', to: "users#user_favorites", as:'user_favorites'
+    get '/:id/folder_list', to: "users#folder_list", as:'folder_list'
   end
 
-  resources :folders, only: [:new, :create, :destroy]
+  resources :rooms, only: [:create, :show, :index]
+  resources :messages, only: [:create]
+
+  resources :folders, only: [:new, :create, :destroy, :show]
 
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
-    resources :folders, only: [:show]  do
+    resources :folders, only: [:edit]  do
       resources :folder_items, only: [:create, :destroy]
     end
   end

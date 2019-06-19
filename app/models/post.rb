@@ -5,6 +5,8 @@ class Post < ApplicationRecord
 	has_many :folder_items, dependent: :destroy
 	attachment :main_image
 
+	default_scope -> { order(created_at: :desc) }
+
 	def favorited_by?(user)
 		if user.present?
 			favorites.where(user_id: user.id).exists?

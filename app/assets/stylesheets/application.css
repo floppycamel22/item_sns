@@ -17,8 +17,17 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+#vegas {
+    width: 100vw;
+    height: 100vh;
+}
+
+#infscr-loading {
+    text-align: center;
+}
+
 body{
-	background-color: #EEEEEE;
+    background-color: #EEEEEE;
 }
 
 .modal-content {
@@ -51,7 +60,6 @@ body{
 .modal-open {
     color:#fff;
     text-decoration: none;
-    /*text-decoration:underline;*/
 }
 
 .modal-open:hover {
@@ -68,3 +76,5 @@ body{
     cursor:pointer;
     color:#f00;
 }
+
+

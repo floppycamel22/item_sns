@@ -1,10 +1,10 @@
 
 <div class="container">
 	<nav class="row row-eq-height">
-		<ul class="card">
-			<% @favorites.reverse.each do |favorite| %>
-				<%= link_to post_path(favorite.post.id),style:"color: #000080;" do %>
+		<ul class="card" id="posts">
+			<% @favorites.each do |favorite| %>
 				<li class="post-list">
+					<%= link_to post_path(favorite.post.id),style:"color: #000080;" do %>
 					<p style="margin: 7px;">
 						<%= attachment_image_tag favorite.post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
 							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= favorite.post.user.user_name %>
@@ -15,9 +15,14 @@
 						<p class="post-date"><label><%= "#{favorite.post.post_comments.count}" %>コメント</label>
 						<label><%= favorite.created_at.strftime('%Y/%m/%d') %></label></p>
 					</div>
-				</li>
 				<% end %>
+				</li>
 			<% end %>
 		</ul>
+		<div class="scroller-status">
+		</div>
+		<div class="pagination">
+  			<%= paginate @posts %>
+		</div>
 	</nav>
 </div>

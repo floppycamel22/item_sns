@@ -1,8 +1,6 @@
 class FolderItemsController < ApplicationController
 
 
-
-
 	def create
 		@post = Post.find(params[:post_id])
 		@folder = Folder.find(params[:folder_id])

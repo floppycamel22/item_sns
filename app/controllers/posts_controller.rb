@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = @q.result
+    @posts = @q.result.page(params[:page]).per(9)
     @users = User.all
   end
 
@@ -8,8 +8,9 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
     @post_comment = PostComment.new
     @user = current_user
-    # @folders = @user.folders.where(folder_id: @user.id)
-    @folders = @user.folders.where(params[:folder_id])
+    if user_signed_in?
+      @folders = @user.folders.where(params[:folder_id])
+    end
   end
 
   def edit

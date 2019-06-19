@@ -2,7 +2,7 @@ class FoldersController < ApplicationController
 
 	def show
 		@folder = Folder.find(params[:id])
-		@folder_items = @folder.folder_items
+		@folder_items = @folder.folder_items.page(params[:page]).per(9)
 	end
 
 	def new

@@ -18,14 +18,29 @@
 
 
 <%= link_to 'フォルダnew', new_folder_path(@user.id) %>
+<%= link_to 'フォルダリスト', user_folder_list_path(@user.id) %>
 
+
+<% if @user.id == current_user.id %>
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">メッセージを送る</a>
+  <% else %>
+    <%= form_for(@room) do |f| %>
+      <%= fields_for @entry do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "メッセージを送る" %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <div class="container">
 	<nav class="row row-eq-height">
-		<ul class="card">
-			<% @posts.reverse.each do |post| %>
-				<%= link_to post_path(post.id),style:"color: #000080;" do %>
+		<ul class="card" id="posts">
+			<% @posts.each do |post| %>
 				<li class="post-list">
+				<%= link_to post_path(post.id),style:"color: #000080;" do %>
 					<p style="margin: 7px;"><%= attachment_image_tag post.user,
 												:profile_image, :fill, 30, 30, fallback: "no_image.jpeg", size:'30x30',
 												class:"card-img-top profile-thumb img-circle" %>  <%= post.user.user_name %>
@@ -37,10 +52,15 @@
 						<label><%= "#{post.post_comments.count}" %>コメント</label>
 						<label><%= post.created_at.strftime('%Y/%m/%d') %></label></p>
 					</div>
-				</li>
 				<% end %>
+				</li>
 			<% end %>
 		</ul>
+		<div class="scroller-status">
+		</div>
+		<div class="pagination">
+  			<%= paginate @posts %>
+		</div>
 	</nav>
 </div>
 

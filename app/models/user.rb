@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -17,6 +16,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :folders,  dependent: :destroy
+
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   attachment :profile_image
 
   validates :user_name, presence: true, length: {  maximum: 20 }

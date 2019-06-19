@@ -13,6 +13,24 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(function() {
+
+	$('.post-list').hide().fadeIn('slow');
+
+});
+
+$(function(){
+	$("#posts").infinitescroll({
+		loading: {
+		      img: "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+		  msgText: "loading..."
+		 },
+		navSelector  : ".pagination",
+		nextSelector : ".pagination a",
+		itemSelector : ".post-list"
+	});
+});

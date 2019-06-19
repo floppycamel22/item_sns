@@ -23,7 +23,9 @@
 				<ul class="header-list nav navbar-nav navbar-right">
 					<li><%= link_to '新着情報', root_path %></li>
 					<li><%= link_to 'マイページ', user_path(current_user) %></li>
-					<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,  data: {confirm:'ログアウトしますか？'} %></li>
+					<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,
+												data: {confirm:'ログアウトしますか？'} %>
+					</li>
 				</ul>
 			</nav>
 			<% else %>

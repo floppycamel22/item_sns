@@ -2,10 +2,10 @@
 
 <div class="container">
 	<nav class="row row-eq-height">
-		<ul class="card">
+		<ul class="card" id="posts">
 			<% @folder_items.each do |item| %>
-				<%= link_to post_path(item.post.id),style:"color: #000080;" do %>
 				<li class="post-list">
+				<%= link_to post_path(item.post.id),style:"color: #000080;" do %>
 					<p style="margin: 7px;">
 						<%= attachment_image_tag item.post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
 							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= item.post.user.user_name %>
@@ -16,9 +16,14 @@
 						<p class="post-date"><label><%= "#{item.post.post_comments.count}" %>コメント</label>
 						<label><%= item.created_at.strftime('%Y/%m/%d') %></label></p>
 					</div>
-				</li>
 				<% end %>
+				</li>
 			<% end %>
 		</ul>
+		<div class="scroller-status">
+		</div>
+		<div class="pagination">
+  			<%= paginate @posts %>
+		</div>
 	</nav>
 </div>
