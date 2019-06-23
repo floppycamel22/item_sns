@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   	end
     get '/:id/user_favorites', to: "users#user_favorites", as:'user_favorites'
     get '/:id/folder_list', to: "users#folder_list", as:'folder_list'
+    resources :notifications, only: [:index]
   end
 
   resources :rooms, only: [:create, :show, :index]
   resources :messages, only: [:create]
-
   resources :folders, only: [:new, :create, :destroy, :show]
 
   resources :posts do

@@ -1,14 +1,11 @@
 class FolderItemsController < ApplicationController
 
-
 	def create
 		@post = Post.find(params[:post_id])
 		@folder = Folder.find(params[:folder_id])
-		# @folder = @post.folder.id
 		@folder_item = FolderItem.new(post_id: params[:post_id])
 		@user = current_user
 		@folder_item.folder_id = @folder.id
-		# @folder_item.post_id = @post.id
 		@folder_item.save
 		redirect_to post_path(@post.id)
 	end

@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = @q.result.page(params[:page]).per(9)
     @users = User.all
   end
 
   def show
-  	@post = Post.find(params[:id])
     @post_comment = PostComment.new
     @user = current_user
     if user_signed_in?
@@ -14,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -29,7 +30,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
@@ -38,7 +38,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
   end
@@ -47,6 +46,10 @@ class PostsController < ApplicationController
 
   def post_params
   	params.require(:post).permit(:post_title, :post_text, :main_image, :user_id )
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end

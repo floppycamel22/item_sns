@@ -41,7 +41,6 @@ header {
   .header-list-item{
     float: left;
     padding: 0 5px;
-    color: white;
     font-size: 18px;
 }
 
@@ -78,6 +77,12 @@ dl.form-group dd{
 .search-btn:hover {
   background:#00CC99;
 }
+
+.header-item {
+  color: #fff;
+}
+
+
 
 
 

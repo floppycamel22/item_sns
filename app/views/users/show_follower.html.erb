@@ -1,8 +1,29 @@
-<% @user.followers.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.user_name %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
-</table>
-<% end %>
+<%= render "users/user_profile" %>
+<div class="container">
+	<h1><i class="fas fa-user"></i>Follower</h1>
+	<nav class="row row-eq-height">
+		<ul class="card" id="posts">
+			<% @user.followers.each do |user| %>
+				<li class="follow-list">
+					<%= link_to user_path(user.id), style:"text-decoration: none;" do %>
+						<p style="margin: 7px;">
+						<%= attachment_image_tag user, :profile_image, :fill, 270, 270,
+														style:" margin: 0 5px 5px 5px;",
+														fallback: "no_image.jpeg",
+														size:'270x270',
+														class:"card-img-top img-circle" %></p>
+						<div class="card-body inner-box">
+							<h2 class="text-center"><%= user.user_name %></h2>
+						</div>
+						<div class="stats">
+							<strong id="following" class="stat">
+					      		フォロー中:  <%= user.following.count %>人</strong>
+					    	<strong id="followers" class="stat">
+				      			フォロワー:   <%= user.followers.count %>人</strong>
+						</div>
+					<% end %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+</div>

@@ -1,7 +1,8 @@
 class FoldersController < ApplicationController
 
+	before_action :set_folder, only: [:show, :create, :destroy]
+
 	def show
-		@folder = Folder.find(params[:id])
 		@folder_items = @folder.folder_items.page(params[:page]).per(9)
 	end
 
@@ -19,7 +20,6 @@ class FoldersController < ApplicationController
 	end
 
 	def destroy
-		@folder = Folder.find(params[:id])
 		@folder.destroy
 		redirect_to root_path
 	end
@@ -28,5 +28,9 @@ class FoldersController < ApplicationController
 
 	def folder_params
 		params.require(:folder).permit(:folder_name, :user_id)
+	end
+
+	def set_folder
+		@folder = Folder.find(params[:id])
 	end
 end

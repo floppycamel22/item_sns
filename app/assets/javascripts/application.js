@@ -16,13 +16,12 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
+// 投稿表示のアニメーション
 $(function() {
-
 	$('.post-list').hide().fadeIn('slow');
-
 });
 
+// 投稿のページネーション
 $(function(){
 	$("#posts").infinitescroll({
 		loading: {
@@ -34,3 +33,55 @@ $(function(){
 		itemSelector : ".post-list"
 	});
 });
+
+// DMのページネーション
+$(function(){
+	$("#messages-page").infinitescroll({
+		loading: {
+		      img: "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+		  msgText: "loading..."
+		 },
+		navSelector  : ".pagination",
+		nextSelector : ".pagination a",
+		itemSelector : ".message-user"
+	});
+});
+
+// 通知のページネーション
+$(function(){
+	$("#user-notifications").infinitescroll({
+		loading: {
+		      img: "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+		  msgText: "loading..."
+		 },
+		navSelector  : ".pagination",
+		nextSelector : ".pagination a",
+		itemSelector : ".user-view"
+	});
+});
+
+// DMページのメッセージTopに戻すボタン
+$(document).ready(function() {
+  var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+       if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+       } else {
+            pagetop.fadeOut();
+            }
+       });
+       pagetop.click(function () {
+           $('body, html').animate({ scrollTop: 0 }, 500);
+   });
+});
+
+// Userページのナビゲーションバーのアクション
+ $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 240) {
+                    $('#articles-scroll').addClass('is-fixed');
+                } else {
+                    $('#articles-scroll').removeClass('is-fixed');
+                }
+            });
+        });

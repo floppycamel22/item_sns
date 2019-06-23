@@ -47,3 +47,56 @@ input::placeholder {
 .form-header-title {
 	font-family: 'serif';
 }
+
+.is-fixed {
+            position: fixed;
+            top: 75px;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+        }
+
+ .articles-Wrapper {
+            text-align: center;
+            background-color: #EEEEEE;
+            color: white;
+            min-width: 1200px;
+            border-bottom: 1px solid #DDDDDD;
+            box-shadow: 0 1px 1px #DDDDDD;
+        }
+
+.flex {
+    display: flex;
+}
+
+.user-menu {
+	float: left;
+	padding: 20px 40px 0 40px;
+	text-decoration: none;
+	color: #333;
+}
+
+.follow-user {
+  background-color: #ffffff;
+  border: 1px solid #ecf0f1;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px #DDDDDD;
+}
+
+.follow_content {
+  margin: 20px;
+}
+
+.follow-list {
+  list-style: none;
+  float: left;
+  margin: 30px 20px 12px 20px;
+  border: 1px solid #CCCCCC;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 1px #DDDDDD;
+}
+
+
+

@@ -30,6 +30,10 @@ body{
     background-color: #EEEEEE;
 }
 
+li {
+    list-style: none;
+}
+
 .modal-content {
     position:fixed;
     display:none;
@@ -76,5 +80,51 @@ body{
     cursor:pointer;
     color:#f00;
 }
+
+
+.user_content {
+    float: left;
+    margin: 10px;
+}
+
+.user_name {
+    float: left;
+    margin: 10px;
+}
+div .user_name :last-child {
+    margin: 3px 0 0 20px ;
+}
+
+.stats {
+    clear: both;
+    margin: 10px;
+}
+
+.stat {
+    margin-left: 15px;
+}
+
+.user_contact {
+    float: left;
+    margin: 25px;
+}
+
+.user-box {
+    margin-top: 100px;
+}
+
+.pagination {
+    display: none;
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+
+
 
 

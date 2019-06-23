@@ -1,0 +1,23 @@
+
+<div class="container">
+    <div class="col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 10px;">
+      	<div class="visiter-user style-1 rounded has-shadow-1">
+	      	<div class="notification-header" style="color: green;border-bottom: 1px solid #DDDDDD;">
+	      		<h2 class="sub-title text-center">
+	      			<i class="fas fa-bell" style="color: green;">
+	      			</i>Notifications
+	      		</h2>
+      		</div>
+			<% if @notifications.exists? %>
+			    <div class="users-index" id="user-notifications">
+			      	<%= render @notifications %>
+			      	<div class="pagination">
+			      		<%= paginate @notifications %>
+			  		</div>
+			    </div>
+			<% else %>
+			    <p>通知はありません</p>
+		  	<% end %>
+		</div>
+	</div>
+</div>

@@ -1,3 +1,4 @@
+<%= render "users/user_profile" %>
 <% @folder_list.each do |folder| %>
 	<%= link_to "#{folder.folder_name}", folder_path(folder.id) %>
 <% end %>

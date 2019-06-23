@@ -1,39 +1,4 @@
-<h2>ユーザー詳細</h2>
-
-
-<%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
-<h4>ユーザーネーム</h4>
-<%= @user.user_name %>
-<section class="following">
-    <%= render 'users/following' %>
-</section>
-<%= render 'users/follow_form' %>
-<h4>プロフィール</h4>
-<%= @user.profile %>
-
- <%= link_to 'Myいいね', user_user_favorites_path(@user.id) %>
-<% if @user == current_user %>
-<%= link_to '編集', edit_user_path %>
-<% end %>
-
-
-<%= link_to 'フォルダnew', new_folder_path(@user.id) %>
-<%= link_to 'フォルダリスト', user_folder_list_path(@user.id) %>
-
-
-<% if @user.id == current_user.id %>
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">メッセージを送る</a>
-  <% else %>
-    <%= form_for(@room) do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "メッセージを送る" %>
-    <% end %>
-  <% end %>
-<% end %>
+<%= render "users/user_profile" %>
 
 <div class="container">
 	<nav class="row row-eq-height">

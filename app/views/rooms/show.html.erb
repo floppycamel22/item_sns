@@ -1,26 +1,54 @@
-<h1>DM</h1>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2" style="margin-top: 30px; border-radius: 10px;">
+    <div class="message-form style-1 rounded has-shadow-1">
+      <h1 class="text-center">Message</h1>
+      <p class="text-center">ユーザー</p>
+      <div class="row col-md-offset-4">
+        <% @entries.each do |e| %>
+          <h5 style="float: left; padding:10px;">
+            <strong><a href="/users/<%= e.user.id %>">
+              <%= attachment_image_tag e.user,  :profile_image,
+                                                :fill, 40, 40,
+                                                 fallback: "no_image.jpeg",
+                                                size:'40x40',
+                                                class:"profile-thumb img-circle" %>   <%= e.user.user_name%>さん</a></strong>
+          </h5>
+        <% end %>
+      </div>
+      <div class="row">
+        <dl class="message-group col-md-10 col-md-offset-1 navbar-fixed">
+          <%= form_for(@message) do |f| %>
+            <dt><%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %></dt>
+            <dt><%= f.hidden_field :room_id, :value => @room.id %></dt>
+            <dd><%= f.submit ("送信"), class: "message-search-btn" %></dd>
+          <% end %>
+        </dl>
+      </div>
 
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
-
-<hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
-
-<%= form_for(@message) do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
+      <% if @messages.present? %>
+        <div id="messages-page">
+          <% @messages.each do |m| %>
+            <div class="message-user">
+              <small><a href="/users/<%= m.user_id %>"><%= attachment_image_tag m.user, :profile_image,
+                                                            :fill, 40, 40, fallback: "no_image.jpeg",
+                                                            size:'40x40', class:"profile-thumb img-circle" %></small></a>
+              <div class="balloon1-left">
+                <strong ><%= m.content %></strong>
+              </div>
+              <small><%= m.created_at.strftime('%m/%d') %></small>
+            </div>
+        <% end %>
+      <% else %>
+        <h3 class="text-center">メッセージはまだありません</h3>
+      <% end %>
+      </div>
+      <div class="pagination">
+        <%= paginate @posts %>
+      </div>
+      <div class="row text-center">
+        <%= link_to "ユーザー一覧に戻る", users_path, style:"magin: 10px" %>
+      </div>
+      <p class="pagetop"><a href="#wrap">▲</a></p>
+    </div>
+  </div>
+</div>

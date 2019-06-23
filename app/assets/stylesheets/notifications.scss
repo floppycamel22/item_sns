@@ -1,0 +1,34 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.visiter-user {
+	background-color: #ffffff;
+	border: 1px solid #ecf0f1;
+	margin: 10px 0;
+	border-radius: 10px;
+	box-shadow: 0 1px 1px #DDDDDD;
+}
+
+
+.user-view {
+	padding: 10px;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.notification-header {
+	color: green;
+	border-bottom: 1px solid #ecf0f1;
+	box-shadow: 0 1px 1px #DDDDDD;
+}
+
+.moderate-font {
+	font-family: 'Ludica Sans Unicode';
+	color: gray;
+}
+
+.notification-circle {
+	color: #00CC99;;
+}

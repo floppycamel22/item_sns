@@ -1,24 +1,27 @@
-
 <div class="container">
 	<div class="card col-md-offset-2 post-show" style="width: 670px;">
 		<%= link_to user_path(@post.user.id), style:"text-decoration: none;" do %>
-		<p class="post-text" style="font-size: 18px;">
-			<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg",
-				size:'60x60', class:"card-img-top profile-thumb img-circle" %>    <%= @post.user.user_name %>
-		</p>
+			<p class="post-text" style="font-size: 18px;">
+				<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg",
+					size:'60x60', class:"card-img-top profile-thumb img-circle" %>    <%= @post.user.user_name %>
+			</p>
 		<% end %>
 		<%= attachment_image_tag @post, :main_image, :fill, 650, 400, style:" margin: 0 10px 5px 10px;" %>
 		<div class="card-body inner-box post-text">
 			<section id="post-title">
 				<label><h3><strong><%= @post.post_title %></strong></h3></label>
 				<% if user_signed_in? %>
-					<label style="float: right; margin: 15px 10px 0 0;"><button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">この投稿を保存</button></label>
+					<label style="float: right; margin: 15px 10px 0 0;">
+						<button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">この投稿を保存</button>
+					</label>
 					<div id="con1" class="modal-content">
 						<h4>フォルダ名選択</h4>
 						<% @folders.each do |folder| %>
-					    	<li><h3><%= link_to "#{folder.folder_name}", post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3></li>
+					    	<li><h3><%= link_to "#{folder.folder_name}",
+					    				post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3>
+					    	</li>
 					    <% end %>
-					<p><a class="modal-close">閉じる</a></p>
+						<p><a class="modal-close">閉じる</a></p>
 					</div>
 				<% end %>
 			</section>
@@ -26,7 +29,6 @@
 			<div id="favorites_buttons_<%= @post.id %>" class="favorites-box">
 		    	<%= render partial: 'favorites/favorites', locals: { post: @post} %>
 			</div>
-
 			<div class="hidden_box">
 			    <label class="label-hover" for="label1"><%= @post.post_comments.count %>件のコメントを表示</label>
 			    <input type="checkbox" id="label1"/>

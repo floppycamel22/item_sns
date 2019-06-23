@@ -1,43 +1,67 @@
 <header class="navbar navbar-fixed-top navbar-dark bg-dark">
 	<div class="container">
-	<div class="row">
-		<div class="col-xs-2">
-			<div id="logo">
-				<h2><%= link_to 'Mytempouch', root_path, style:"color: #fff; text-decoration: none;" %></h2>
+		<div class="row">
+			<div class="col-xs-2">
+				<div id="logo">
+					<h2><%= link_to 'Mytempouch', root_path, style:"color: #fff; text-decoration: none;" %></h2>
+				</div>
+			</div>
+			<div class='col-xs-5'>
+				<dl class="form-group col-xs-12 col-md-offset-1">
+					<%= search_form_for @q, url: root_path do |f| %>
+						<dt><%= f.text_field :post_title_cont, class: "form-control"%></dt>
+						<dd><%= button_tag(class: 'search-btn') do %>
+							<%= content_tag :span, "" ,class: "glyphicon glyphicon-search" %>
+							<% end %>
+						</dd>
+					<% end %>
+				</dl>
+			</div>
+			<div class="col-xs-5">
+				<% if user_signed_in? %>
+				<nav>
+					<ul class="header-list nav navbar-nav navbar-right">
+						<li class="header-item">
+							<%= link_to root_path, style:"text-decoration: none;" do %>
+								<i class="fas fa-dove"></i> 新着投稿
+							<% end %>
+						</li>
+						<li class="header-item">
+							<%= link_to user_path(current_user), style:"text-decoration: none;" do %>
+								<i class="fas fa-user"></i> マイページ
+							<% end %>
+						</li>
+						<% if unchecked_notifications.any? %>
+						<li class="notification header-item">
+							<%= link_to  user_notifications_path(current_user), style:"text-decoration: none;" do %>
+								<i class="fas fa-bell"></i> 通知<i class="fa fa-circle notification-circle"></i>
+													 <% end %>
+						</li>
+						<% else %>
+						<li class="notification header-item">
+							<%= link_to user_notifications_path(current_user),style:"text-decoration: none;" do  %>
+								<i class="fas fa-bell size:5x"></i> 通知
+							<% end %>
+						<% end %>
+						</li>
+						<li><%= link_to  destroy_user_session_path , method: :delete,
+													data: {confirm:'ログアウトしますか？'},
+													style:"text-decoration: none;" do %>
+								<i class="fas fa-sign-out-alt"></i> ログアウト
+							<% end %>
+						</li>
+					</ul>
+				</nav>
+				<% else %>
+				<nav>
+					<ul class="header-list nav navbar-nav navbar-right">
+						<li class="header-item"><%= link_to 'ホーム', root_path %></li>
+						<li class="header-item"><%= link_to '新規登録', new_user_registration_path %></li>
+						<li class="header-item"><%= link_to 'ログイン', new_user_session_path %></li>
+					</ul>
+				</nav>
+				<% end %>
 			</div>
 		</div>
-		<div class='col-xs-5'>
-			<dl class="form-group col-xs-12 col-md-offset-1">
-				<%= search_form_for @q, url: root_path do |f| %>
-					<dt><%= f.text_field :post_title_cont, class: "form-control"%></dt>
-					<dd><%= button_tag(class: 'search-btn') do %>
-						<%= content_tag :span, "" ,class: "glyphicon glyphicon-search" %>
-						<% end %>
-					</dd>
-				<% end %>
-			</dl>
-		</div>
-		<div class="col-xs-5">
-			<% if user_signed_in? %>
-			<nav>
-				<ul class="header-list nav navbar-nav navbar-right">
-					<li><%= link_to '新着情報', root_path %></li>
-					<li><%= link_to 'マイページ', user_path(current_user) %></li>
-					<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,
-												data: {confirm:'ログアウトしますか？'} %>
-					</li>
-				</ul>
-			</nav>
-			<% else %>
-			<nav>
-				<ul class="header-list nav navbar-nav navbar-right">
-					<li><%= link_to 'ホーム', root_path %></li>
-					<li><%= link_to '新規登録', new_user_registration_path %></li>
-					<li><%= link_to 'ログイン', new_user_session_path %></li>
-				</ul>
-			</nav>
-			<% end %>
-		</div>
-	</div>
 	</div>
 </header>
