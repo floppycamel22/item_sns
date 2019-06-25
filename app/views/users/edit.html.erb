@@ -1,18 +1,31 @@
+<div class="container">
+    <div class="col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 10px;">
+      	<div class="visiter-user style-1 rounded has-shadow-1">
+      		<div class="new-post-header" style="color: green;border-bottom: 1px solid #DDDDDD;">
+				<h2 class="sub-title text-center"> プロフィール編集</h2>
+			</div>
+			<%= form_for(@user) do |f| %>
+				<div class="post-field row">
+					<%= attachment_image_tag @user, :profile_image,
+													:fill, 60, 60,
+													fallback:"no_image.jpeg", size:'60x60',
+													class:"col-md-2 col-md-offset-2" %>
+					<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class:"col-md-8 col-md-offset-2" %>
+				</div>
 
-<%= form_for(@user) do |f| %>
-<div class="field">
-	<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpeg", size:'60x60' %>
-	<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+				<div class="post-field row">
+					<%= f.text_field :user_name, class:"col-md-8 col-md-offset-2 field-form",  placeholder: 'ユーザーネーム' %>
+				</div>
+
+				<div class="post-field row">
+				 	<%= f.text_area :profile, class:"col-md-8 col-md-offset-2 field-form",
+				 							　placeholder: 'プロフィール',
+				 							 :size => "40x4" %>
+				</div>
+				<div class="post-field row">
+					<%= f.submit '完了', class:"col-md-8 col-md-offset-2 btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
-
-<div class="field">
-	<%= f.label :name, class: "name" %>
-	<%= f.text_field :user_name %>
-</div>
-
-<div class="field">
- 	<%= f.text_area :profile %>
-</div>
-
-<%= f.submit '完了' %>
-<% end %>

@@ -1,0 +1,31 @@
+<div class="container">
+	<h1><i class="fas fa-dove" style="color: #00DD00;"></i> Following Posts</h1>
+	<nav class="row row-eq-height">
+		<ul class="card" id="posts">
+			<% @feed_posts.each do |follow| %>
+				<li class="post-list caption">
+					<span class="text">
+						<h2>Check!</h2>
+					</span>
+					<%= link_to post_path(follow.id),style:"color: #000080; text-decoration: none;" do %>
+					<p style="margin: 7px;">
+						<%= attachment_image_tag follow.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
+							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= follow.user.user_name %>
+					</p>
+						<%= attachment_image_tag follow, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
+					<div class="card-body inner-box">
+						<h4 class="card-text" style="padding-left: 20px;"><%= follow.post_title %></h4>
+						<p class="post-date"><label><%= "#{follow.post_comments.count}" %>コメント</label>
+						<label><%= follow.created_at.strftime('%Y/%m/%d') %></label></p>
+					</div>
+				<% end %>
+				</li>
+			<% end %>
+		</ul>
+		<div class="scroller-status">
+		</div>
+		<div class="pagination">
+  			<%= paginate @posts %>
+		</div>
+	</nav>
+</div>

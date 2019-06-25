@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
 
 	def set_search
 		@q = Post.ransack(params[:q])
-		@posts = @q.result.page(params[:page]).per(9)
+		@posts = @q.result.includes(:user).page(params[:page]).per(9)
+		@u = User.ransack(params[:q])
+		@users = @u.result
 	end
 
 	protected
@@ -15,12 +17,10 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-		root_path
-		# 6/6現在の時点で
+		user_following_post_path(current_user)
 	end
 
 	def after_sign_out_path_for(resource)
 		root_path
 	end
-
 end

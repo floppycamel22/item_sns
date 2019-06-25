@@ -1,24 +1,28 @@
 
 <div class="container">
+	<h1><i class="fas fa-dove" style="color: #00DD00;"></i> Post All</h1>
 	<nav class="row row-eq-height">
 		<ul class="card" id="posts">
 			<% @posts.each do |posts| %>
-					<li class="post-list">
-						<%= link_to post_path(posts.id),style:"color: #000080; text-decoration: none;" do %>
-						<p style="margin: 7px;">
-							<%= attachment_image_tag posts.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
-								size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= posts.user.user_name %>
+				<li class="post-list caption">
+					<span class="text">
+						<h2>Check!</h2>
+					</span>
+					<%= link_to post_path(posts.id),style:"color: #000080; text-decoration: none;" do %>
+					<p style="margin: 7px;">
+						<%= attachment_image_tag posts.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
+							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= posts.user.user_name %>
+					</p>
+						<%= attachment_image_tag posts, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
+					<div class="card-body inner-box">
+						<h4 class="card-text" style="padding-left: 20px;"><%= posts.post_title %></h4>
+						<p class="post-date"><label id="favorite_count"><%= posts.favorites.count %>いいね</label>
+											 <label><%= "#{posts.post_comments.count}" %>コメント</label>
+											 <label><%= posts.created_at.strftime('%Y/%m/%d') %></label>
 						</p>
-							<%= attachment_image_tag posts, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>
-						<div class="card-body inner-box">
-							<h4 class="card-text" style="padding-left: 20px;"><%= posts.post_title %></h4>
-							<p class="post-date"><label id="favorite_count"><%= posts.favorites.count %>いいね</label>
-												 <label><%= "#{posts.post_comments.count}" %>コメント</label>
-												 <label><%= posts.created_at.strftime('%Y/%m/%d') %></label>
-							</p>
-						</div>
-						<% end %>
-					</li>
+					</div>
+					<% end %>
+				</li>
 			<% end %>
 		<div class="scroller-status">
 		</div>

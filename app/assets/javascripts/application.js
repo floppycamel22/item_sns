@@ -85,3 +85,12 @@ $(document).ready(function() {
                 }
             });
         });
+
+// headerドロップダウン
+	$(function(){
+	    $('#header-menu li').hover(function(){
+	        $("ul:not(:animated)", this).slideDown();
+	    }, function(){
+	        $("ul.header-list",this).slideUp();
+	    });
+	});

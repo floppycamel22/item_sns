@@ -1,6 +1,7 @@
 
 <% if @post.favorited_by?(current_user) %>
-	<%= link_to post_favorite_path(@post), method: :delete, remote: true do %>
+	<%# favorite = Favorite.find_by(user_id: current_user.id,post_id: @post.id) %>
+	<%= link_to post_favorites_path(@post), method: :delete, remote: true do %>
 			<p><span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red; font-size: 18px;"></span>
 			<%= @post.favorites.count %>いいね</p>
 	<% end %>
@@ -10,3 +11,6 @@
 			<%= @post.favorites.count %>いいね</p>
 	<% end %>
 <% end %>
+
+
+<%#= link_to post_favorite_path(@post,favorite), method: :delete, remote: true do %>

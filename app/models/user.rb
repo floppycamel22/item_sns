@@ -31,6 +31,15 @@ class User < ApplicationRecord
     validates :user_name, presence: true, length: {  maximum: 20 }
     validates :email, presence: true, length: { in: 3..25 }, format: { with: VALID_EMAIL }
     validates :profile, length: { maximum: 200 }
+
+  default_scope -> { order(created_at: :desc) }
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+  end
+
   def follow(other_user)
     following << other_user
   end
@@ -42,7 +51,6 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-
 
   def create_notification_by(current_user, target)
     notification = current_user.active_notifications.new(

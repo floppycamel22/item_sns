@@ -124,6 +124,15 @@ div .user_name :last-child {
     color: #fff;
 }
 
+.header-list li {
+    color: #fff;
+}
+
+#post_position {
+    margin-top: 12px;
+}
+
+
 
 
 

@@ -15,13 +15,23 @@
 						<button type="button"  data-target="con1" class="modal-open btn btn-success mt-5">この投稿を保存</button>
 					</label>
 					<div id="con1" class="modal-content">
-						<h4>フォルダ名選択</h4>
+						<h4>フォルダ選択</h4>
+						<div class="row">
 						<% @folders.each do |folder| %>
-					    	<li><h3><%= link_to "#{folder.folder_name}",
-					    				post_folder_folder_items_path(@post.id, folder.id), method: :post %></h3>
+							<li class="folder-post">
+								<%= link_to post_folder_folder_items_path(@post.id, folder.id),
+											method: :post, style:"text-decoration: none;" do  %>
+									<%= attachment_image_tag folder, :folder_image, :fill, 150, 150,
+														  fallback:"folder_no_image.png", size:'150x150',
+														  style:"margin: 10px 3px 0 3px;" %>
+									<p class="text-center"><%= folder.folder_name %></p>
+								<% end %>
 					    	</li>
 					    <% end %>
-						<p><a class="modal-close">閉じる</a></p>
+					    </div>
+					    <div class="row text-center">
+							<p><a class="modal-close">閉じる</a></p>
+						</div>
 					</div>
 				<% end %>
 			</section>
@@ -33,7 +43,7 @@
 			    <label class="label-hover" for="label1"><%= @post.post_comments.count %>件のコメントを表示</label>
 			    <input type="checkbox" id="label1"/>
 			    <div class="hidden_show">
-					<% @post.post_comments.each do |post_comment| %>
+					<% @post_comments.each do |post_comment| %>
 						<li class="comment-list" style="margin-top: 5px;">
 							<div id="comment-text">
 								<%= link_to user_path(post_comment.user.id), style:"color: #000080;" do %>
@@ -55,10 +65,14 @@
 					<%= f.submit "コメント" %>
 				<% end %>
 			<% end %>
-			<% if @post.user == current_user %>
-				<%= link_to '編集', edit_post_path %>
-				<%= link_to '削除', post_path(@post.id), method: :delete, data: { confirm: '本当によろしいですか？'} %>
-			<% end %>
+			<div class="row">
+				<% if @post.user == current_user %>
+						<%= link_to '削除', post_path(@post.id),
+										   class:"current_user_contents btn btn-warning",
+										   method: :delete, data: { confirm: '本当によろしいですか？'} %>
+						<%= link_to '編集', edit_post_path, class:"current_user_contents btn btn-primary" %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -49,20 +49,20 @@ input::placeholder {
 }
 
 .is-fixed {
-            position: fixed;
-            top: 75px;
-            left: 0;
-            z-index: 1;
-            width: 100%;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
         }
 
  .articles-Wrapper {
-            text-align: center;
-            background-color: #EEEEEE;
-            color: white;
-            min-width: 1200px;
-            border-bottom: 1px solid #DDDDDD;
-            box-shadow: 0 1px 1px #DDDDDD;
+  text-align: center;
+  background-color: #EEEEEE;
+  color: white;
+  min-width: 1200px;
+  border-bottom: 1px solid #DDDDDD;
+  box-shadow: 0 1px 1px #DDDDDD;
         }
 
 .flex {
@@ -99,4 +99,17 @@ input::placeholder {
 }
 
 
+.folder-new {
+  border-radius: 5px;
+  background-color: #AAFFFF;
+  box-shadow: 0 1px 1px #DDDDDD;
+  height: 40px;
+  width: 130px;
+  margin: 20px 0 0 40px;
+}
+
+.current_user_contents {
+  float: right;
+  margin: 15px;
+}
 

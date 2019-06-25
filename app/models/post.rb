@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 	attachment :main_image
 	validates :post_title, presence: true, length: { maximum: 25 }
 	validates :post_text, presence: true
-	validates :main_image_id, presence: true
+	validates :main_image, presence: true
 
 	default_scope -> { order(created_at: :desc) }
 
@@ -20,11 +20,11 @@ class Post < ApplicationRecord
 	end
 
 	def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-      post_id: self.id,
-      visited_id: self.user.id,
-      action:"favorite"
-    )
-    notification.save if notification.valid?
+	    notification = current_user.active_notifications.new(
+	      post_id: self.id,
+	      visited_id: self.user.id,
+	      action:"favorite"
+	    )
+	    notification.save if notification.valid?
   	end
 end

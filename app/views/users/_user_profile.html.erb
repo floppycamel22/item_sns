@@ -10,7 +10,7 @@
 				<h1 class="user_name"><%= @user.user_name %></h1>
 				<% if @user == current_user %>
 					<div class="user_name">
-						<%= link_to 'プロフィール編集', edit_user_path(@user.id), class:'edit_form btnbtn-primary',
+						<%= link_to 'プロフィール編集', edit_user_path, class:'edit_form btn btn-primary',
 														   style:"text-decoration: none;" %>
 					</div>
 				<% else %>
@@ -51,9 +51,15 @@
 											           style:"text-decoration: none;" %></h4></li>
 				<li class="user-menu"><h4><%= link_to 'フォルダリスト', user_folder_list_path(@user.id),
 													   style:"text-decoration: none;" %></h4></li>
-				<li class="user-menu"><h4><%= link_to 'フォルダnew', new_folder_path(@user.id),
-													   style:"text-decoration: none;", class:'edit_form' %></h4></li>
 			</ul>
+			<% if @user == current_user %>
+				<div class="folder-new">
+					<h4><%= link_to new_folder_path(@user.id), style:"text-decoration: none;" do %>
+						<i class="fas fa-folder"></i> New folder
+						<% end %>
+					</h4>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </nav>

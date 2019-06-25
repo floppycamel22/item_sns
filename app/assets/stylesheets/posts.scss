@@ -9,7 +9,7 @@
 .post-list {
 	list-style: none;
 	float: left;
-	margin: 30px 12px 12px 12px;
+	margin: 30px 12px 30px 12px;
 	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 	background-color: #FFFFFF;
@@ -41,6 +41,12 @@ label{
 #post-title{
 	padding-bottom: 20px;
 	border-bottom: 1px solid #CCCCCC;
+}
+
+.new-post-header {
+	color: green;
+	border-bottom: 1px solid #ecf0f1;
+	box-shadow: 0 1px 1px #DDDDDD;
 }
 
 
@@ -96,5 +102,19 @@ label{
 #comment-text {
 	margin: 10px 0 0 10px;
 }
+
+.post-field {
+	margin: 20px;
+}
+
+.folder-post{
+	float: left;
+	width: 160px;
+	margin: 23px;
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+	box-shadow: 10px 10px 15px -10px #DDDDDD;
+	}
+
 
 

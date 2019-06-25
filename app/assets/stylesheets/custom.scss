@@ -31,19 +31,6 @@ header {
  line-height: 80px;
 }
 
-.header-list{
-  float: right;
-  list-style: none;
-  line-height: 100%;
-  padding-top: 15px;
-}
-
-  .header-list-item{
-    float: left;
-    padding: 0 5px;
-    font-size: 18px;
-}
-
 .header-list-item:last-child{
   padding-right: 20px;
 }
@@ -75,16 +62,96 @@ dl.form-group dd{
   color:#FFF;
 }
 .search-btn:hover {
-  background:#00CC99;
+  background:#00AA00;
 }
+
+
+.search-btn-user{
+  display:block;
+  background:#66CCFF;
+  width:100%;
+  height:34px;
+  line-height:34px;
+  border:none;
+  border-radius: 0 50px 50px 0;
+  color:#FFF;
+}
+
+.search-btn-user:hover {
+  background:#00CCFF;
+}
+
+// ここからナビゲーションタイトル
 
 .header-item {
   color: #fff;
 }
 
 
+.header-title {
+  padding: 5px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #fff;
+  width: 110px
+}
 
+.header-list-item{
+    float: left;
+    padding: 0 5px;
+    font-size: 18px;
+}
 
+.header-list {
+  padding: 5px;
+}
 
+.header-list {
+  display: none;
+    position: absolute;
+    margin-left: -5px;
+    width: 110px;
+    background-color: #222222;
+}
 
+.header-list li {
+  padding: 5px 0;
+  margin: 5px 0;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+}
+
+.header-list li:hover {
+  background: #00BB00;
+}
+
+// ここからリストのホバー
+
+.caption {
+    position: relative;
+}
+
+.caption .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.caption .text h2 {
+    margin: 0;
+    color: #fff;
+}
+
+.caption:hover .text {
+    opacity: 1;
+}
+
+.caption:hover {
+    -webkit-filter: brightness(70%);
+}
 

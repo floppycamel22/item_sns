@@ -6,58 +6,82 @@
 					<h2><%= link_to 'Mytempouch', root_path, style:"color: #fff; text-decoration: none;" %></h2>
 				</div>
 			</div>
-			<div class='col-xs-5'>
-				<dl class="form-group col-xs-12 col-md-offset-1">
-					<%= search_form_for @q, url: root_path do |f| %>
-						<dt><%= f.text_field :post_title_cont, class: "form-control"%></dt>
-						<dd><%= button_tag(class: 'search-btn') do %>
-							<%= content_tag :span, "" ,class: "glyphicon glyphicon-search" %>
-							<% end %>
-						</dd>
-					<% end %>
-				</dl>
-			</div>
+			<%= render 'layouts/search' %>
 			<div class="col-xs-5">
 				<% if user_signed_in? %>
 				<nav>
-					<ul class="header-list nav navbar-nav navbar-right">
-						<li class="header-item">
-							<%= link_to root_path, style:"text-decoration: none;" do %>
-								<i class="fas fa-dove"></i> 新着投稿
+					<ul id="header-menu" class="nav navbar-nav navbar-right">
+						<li class="header-title">
+							<%= link_to  users_path, style:"color: #fff;"  do %>
+								<i class="fas fa-users"></i> Users
 							<% end %>
 						</li>
-						<li class="header-item">
-							<%= link_to user_path(current_user), style:"text-decoration: none;" do %>
-								<i class="fas fa-user"></i> マイページ
+						<li class="header-title">
+							<%= link_to root_path, style:"text-decoration: none; color: #fff;" do %>
+								<i class="fas fa-dove"></i> Post
 							<% end %>
+							<ul class="header-list">
+								<li><%= link_to 'ホーム', root_path(current_user.id),
+														 style:"text-decoration: none; color: #fff;" %></li>
+								<li><%= link_to 'フォロー中', user_following_post_path(current_user.id),
+															style:"text-decoration: none; color: #fff;" %></li>
+							</ul>
 						</li>
-						<% if unchecked_notifications.any? %>
-						<li class="notification header-item">
-							<%= link_to  user_notifications_path(current_user), style:"text-decoration: none;" do %>
-								<i class="fas fa-bell"></i> 通知<i class="fa fa-circle notification-circle"></i>
-													 <% end %>
-						</li>
-						<% else %>
-						<li class="notification header-item">
-							<%= link_to user_notifications_path(current_user),style:"text-decoration: none;" do  %>
-								<i class="fas fa-bell size:5x"></i> 通知
+						<li class="header-title">
+							<% if unchecked_notifications.any? %>
+								<%= link_to user_path(current_user), style:"text-decoration: none; color: #fff;" do %>
+									<i class="fas fa-user"></i> User<i class="fa fa-circle notification-circle"></i>
+								<% end %>
+							<% else %>
+								<%= link_to user_path(current_user), style:"text-decoration: none; color: #fff;" do %>
+									<i class="fas fa-user"></i> User
+								<% end %>
 							<% end %>
-						<% end %>
+							<ul class="header-list">
+								<li><%= link_to 'マイページ', user_path(current_user),
+															style:"text-decoration: none; color: #fff;" %></li>
+								<% if unchecked_notifications.any? %>
+								<li>
+									<%= link_to  user_notifications_path(current_user), style:"text-decoration: none; color: #fff;" do %>
+										通知 <i class="fa fa-circle notification-circle"></i>
+									<% end %>
+								</li>
+								<% else %>
+									<li><%= link_to '通知', user_notifications_path(current_user),
+														   style:"text-decoration: none; color: #fff;" %></li>
+								<% end %>
+								<% if current_user.try(:admin?) %>
+									<li><%= link_to "管理画面", "/admin", style:"text-decoration: none; color: #fff;" %>
+								<% end %>
+								<li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete,
+															data: {confirm:'ログアウトしますか？'},
+															style:"text-decoration: none; color: #fff;" %></li>
+							</ul>
 						</li>
-						<li><%= link_to  destroy_user_session_path , method: :delete,
-													data: {confirm:'ログアウトしますか？'},
-													style:"text-decoration: none;" do %>
-								<i class="fas fa-sign-out-alt"></i> ログアウト
+						<li><%= link_to new_post_path, class:"btn btn-success mt-5", id:"post_position" do %>
+								<span class="glyphicon glyphicon-send" aria-hidden="true"></span> New Post
 							<% end %>
 						</li>
 					</ul>
 				</nav>
 				<% else %>
 				<nav>
-					<ul class="header-list nav navbar-nav navbar-right">
-						<li class="header-item"><%= link_to 'ホーム', root_path %></li>
-						<li class="header-item"><%= link_to '新規登録', new_user_registration_path %></li>
-						<li class="header-item"><%= link_to 'ログイン', new_user_session_path %></li>
+					<ul id="header-menu" class="nav navbar-nav navbar-right">
+						<li class="header-title">
+							<%= link_to root_path, 	style:"text-decoration: none; color: #fff;" do %>
+								<i class="fas fa-home"></i> Home
+							<% end %>
+						</li>
+						<li class="header-title">
+							<%= link_to new_user_registration_path, style:"text-decoration: none; color: #fff;" do %>
+								<i class="fas fa-edit"></i> Sign Up
+							<% end %>
+						</li>
+						<li class="header-title">
+							<%= link_to new_user_session_path, style:"text-decoration: none; color: #fff;" do %>
+								<i class="fas fa-sign-in-alt"></i> Sign In
+							<% end %>
+						</li>
 					</ul>
 				</nav>
 				<% end %>

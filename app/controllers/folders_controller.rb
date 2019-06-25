@@ -1,9 +1,9 @@
 class FoldersController < ApplicationController
 
-	before_action :set_folder, only: [:show, :create, :destroy]
+	before_action :set_folder, only: [:show, :destroy, :edit]
 
 	def show
-		@folder_items = @folder.folder_items.page(params[:page]).per(9)
+		@folder_items = @folder.folder_items.includes(post: :user).page(params[:page]).per(9)
 	end
 
 	def new
@@ -11,12 +11,14 @@ class FoldersController < ApplicationController
 		@user = current_user
 	end
 
+	def edit
+	end
+
 	def create
 		@folder = Folder.new(folder_params)
 		@folder.user_id = current_user.id
 		@folder.save
-		# redirect_to  post_folder_path(@folder.id)
-		redirect_to root_path
+		redirect_to  folder_path(@folder.id)
 	end
 
 	def destroy
@@ -27,7 +29,7 @@ class FoldersController < ApplicationController
 	private
 
 	def folder_params
-		params.require(:folder).permit(:folder_name, :user_id)
+		params.require(:folder).permit(:folder_name, :user_id, :folder_image)
 	end
 
 	def set_folder

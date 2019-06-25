@@ -1,8 +1,22 @@
-<h1>new folder</h1>
-
-<%= form_for(@folder) do |f| %>
-
-<%= f.text_field :folder_name %>
-
-<%= f.submit 'フォルダ作成' %>
-<% end %>
+<div class="container">
+    <div class="col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 10px;">
+      	<div class="visiter-user style-1 rounded has-shadow-1">
+      		<div class="new-post-header" style="color: green;border-bottom: 1px solid #DDDDDD;">
+				<h2 class="sub-title text-center">
+					<i class="fas fa-folder"></i> New folder</h2>
+			</div>
+			<%= form_for(@folder) do |f| %>
+				<div class="post-field row">
+					<h3 class="col-md-8 col-md-offset-2">folder image</h3>
+					<%= f.attachment_field :folder_image, class:"col-md-8 col-md-offset-2" %>
+				</div>
+				<div class="post-field row">
+					<%= f.text_field :folder_name, class:"col-md-8 col-md-offset-2 field-form", placeholder: 'フォルダ名' %>
+				</div>
+				<div class="post-field row">
+					<%= f.submit 'フォルダ作成', class:"col-md-8 col-md-offset-2 btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

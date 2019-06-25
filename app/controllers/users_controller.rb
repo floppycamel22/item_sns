@@ -6,11 +6,17 @@ class UsersController < ApplicationController
   before_action :set_entry, only: [:show, :folder_list, :user_favorites, :following, :followers]
 
   def index
-    @users = User.all
+    @users = @u.result
   end
 
   def show
     @posts = @user.posts.page(params[:page]).per(9)
+  end
+
+  def following_post
+    if user_signed_in?
+      @feed_posts = current_user.feed.includes(:user).page(params[:page]).per(9)
+    end
   end
 
   def folder_list
@@ -21,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def user_favorites
-    @favorites = @user.favorites.page(params[:page]).per(9)
+    @favorites = @user.favorites.includes(post: :user).page(params[:page]).per(9)
   end
 
   def update

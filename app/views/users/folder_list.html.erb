@@ -1,4 +1,31 @@
+
 <%= render "users/user_profile" %>
-<% @folder_list.each do |folder| %>
-	<%= link_to "#{folder.folder_name}", folder_path(folder.id) %>
-<% end %>
+<div class="container">
+	<nav class="row row-eq-height">
+		<h1><i class="fas fa-folder" style="color: #00CCFF;"></i> Folder list</h1>
+		<ul class="card" id="users">
+			<% @folder_list.each do |folder| %>
+				<li class="folder-list caption">
+					<span class="text">
+						<h2>Check!</h2>
+					</span>
+					<%= link_to folder_path(folder.id), class:"folder-name",
+													style:"text-decoration: none;" do %>
+					<%= attachment_image_tag folder, :folder_image, :fill, 260, 200,
+													  fallback:"folder_no_image.png", size:'260x200',
+													  style:"margin: 10px 3px 0 3px;" %>
+					<h4 class="text-center"><%= folder.folder_name %></h4>
+					<% end %>
+					<% if @user == current_user %>
+						<p><%= link_to 'フォルダ削除', folder_path(folder.id),
+															method: :delete, data: { confirm: '本当によろしいですか？'},
+															class:"btn btn-warning folder-delete",
+															style:"font-size: 10px; float: right; margin: 10px;" %></p>
+					<% end %>
+				<li>
+			<% end %>
+		</ul>
+	<nav>
+</div>
+
+

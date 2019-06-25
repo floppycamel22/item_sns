@@ -1,0 +1,24 @@
+<div class='col-xs-5'>
+	<% if  request.path == users_path %>
+		<dl class="form-group col-xs-12 col-md-offset-1">
+			<%= search_form_for @u, url: users_path do |f| %>
+				<dt><%= f.text_field :user_name_cont, class: "form-control", placeholder: 'ユーザー検索' %></dt>
+				<dd><%= button_tag(class: 'search-btn-user') do %>
+						<%= content_tag :span, "" , class: "glyphicon glyphicon-search" %>
+					<% end %>
+				</dd>
+			<% end %>
+		</dl>
+	<% else %>
+		<dl class="form-group col-xs-12 col-md-offset-1">
+			<%= search_form_for @q, url: root_path do |f| %>
+				<dt><%= f.text_field :post_title_cont, class: "form-control", placeholder: '投稿検索' %></dt>
+				<dd><%= button_tag(class: 'search-btn') do %>
+						<%= content_tag :span, "" ,
+										class: "glyphicon glyphicon-search" %>
+					<% end %>
+				</dd>
+			<% end %>
+		</dl>
+	<% end %>
+</div>

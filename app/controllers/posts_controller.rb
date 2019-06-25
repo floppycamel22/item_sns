@@ -3,12 +3,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = @q.result.page(params[:page]).per(9)
+    @posts = @q.result.includes(:user).page(params[:page]).per(9)
     @users = User.all
   end
 
   def show
     @post_comment = PostComment.new
+    @post_comments = @post.post_comments.includes(:user)
     @user = current_user
     if user_signed_in?
       @folders = @user.folders.where(params[:folder_id])
