@@ -6,7 +6,7 @@
 			<% @favorites.each do |favorite| %>
 				<li class="post-list caption">
 					<span class="text">
-						<h2>Check!</h2>
+						<h2><i class="fas fa-check"></i>Check</h2>
 					</span>
 					<%= link_to post_path(favorite.post.id),style:"color: #000080; text-decoration: none;" do %>
 					<p style="margin: 7px;">

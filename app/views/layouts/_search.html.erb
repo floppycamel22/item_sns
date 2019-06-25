@@ -12,7 +12,7 @@
 	<% else %>
 		<dl class="form-group col-xs-12 col-md-offset-1">
 			<%= search_form_for @q, url: root_path do |f| %>
-				<dt><%= f.text_field :post_title_cont, class: "form-control", placeholder: '投稿検索' %></dt>
+				<dt><%= f.text_field :post_title_or_post_text_cont, class: "form-control", placeholder: '投稿検索' %></dt>
 				<dd><%= button_tag(class: 'search-btn') do %>
 						<%= content_tag :span, "" ,
 										class: "glyphicon glyphicon-search" %>
