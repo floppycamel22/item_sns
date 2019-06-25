@@ -12,7 +12,7 @@
 					<%= link_to folder_path(folder.id), class:"folder-name",
 													style:"text-decoration: none;" do %>
 					<%= attachment_image_tag folder, :folder_image, :fill, 260, 200,
-													  fallback:"folder_no_image.png", size:'260x200',
+													  fallback:"/images/folder_no_image.png", size:'260x200',
 													  style:"margin: 10px 3px 0 3px;" %>
 					<h4 class="text-center"><%= folder.folder_name %></h4>
 					<% end %>

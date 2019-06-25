@@ -2,7 +2,7 @@
 	<div class="card col-md-offset-2 post-show" style="width: 670px;">
 		<%= link_to user_path(@post.user.id), style:"text-decoration: none;" do %>
 			<p class="post-text" style="font-size: 18px;">
-				<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg",
+				<%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "/images/no_image.jpeg",
 					size:'60x60', class:"card-img-top profile-thumb img-circle" %>    <%= @post.user.user_name %>
 			</p>
 		<% end %>
@@ -22,8 +22,9 @@
 								<%= link_to post_folder_folder_items_path(@post.id, folder.id),
 											method: :post, style:"text-decoration: none;" do  %>
 									<%= attachment_image_tag folder, :folder_image, :fill, 150, 150,
-														  fallback:"folder_no_image.png", size:'150x150',
-														  style:"margin: 10px 3px 0 3px;" %>
+																	  fallback:"/images/folder_no_image.png",
+																	  size:'150x150',
+																	  style:"margin: 10px 3px 0 3px;" %>
 									<p class="text-center"><%= folder.folder_name %></p>
 								<% end %>
 					    	</li>
@@ -48,7 +49,7 @@
 							<div id="comment-text">
 								<%= link_to user_path(post_comment.user.id), style:"color: #000080;" do %>
 									<p><%= attachment_image_tag post_comment.user,
-										   :profile_image,  :fill, 30, 30, fallback:"no_image.jpeg", size:'30x30',
+										   :profile_image,  :fill, 30, 30, fallback:"/images/no_image.jpeg", size:'30x30',
 										   class:"card-img-top profile-thumb img-circle" %>   <%= post_comment.user.user_name %>
 									</p>
 								<% end %>

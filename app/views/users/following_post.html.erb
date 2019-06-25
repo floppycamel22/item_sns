@@ -9,7 +9,7 @@
 					</span>
 					<%= link_to post_path(follow.id),style:"color: #000080; text-decoration: none;" do %>
 					<p style="margin: 7px;">
-						<%= attachment_image_tag follow.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpeg",
+						<%= attachment_image_tag follow.user, :profile_image, :fill, 30, 30, fallback: "/images/no_image.jpeg",
 							size:'30x30', class:"card-img-top profile-thumb img-circle" %>  <%= follow.user.user_name %>
 					</p>
 						<%= attachment_image_tag follow, :main_image, :fill, 340, 250, style:" margin: 0 5px 5px 5px; " %>

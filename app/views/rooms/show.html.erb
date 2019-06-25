@@ -9,7 +9,7 @@
             <strong><a href="/users/<%= e.user.id %>">
               <%= attachment_image_tag e.user,  :profile_image,
                                                 :fill, 40, 40,
-                                                 fallback: "no_image.jpeg",
+                                                 fallback: "/images/no_image.jpeg",
                                                 size:'40x40',
                                                 class:"profile-thumb img-circle" %>   <%= e.user.user_name%>さん</a></strong>
           </h5>
@@ -30,7 +30,7 @@
           <% @messages.each do |m| %>
             <div class="message-user">
               <small><a href="/users/<%= m.user_id %>"><%= attachment_image_tag m.user, :profile_image,
-                                                            :fill, 40, 40, fallback: "no_image.jpeg",
+                                                            :fill, 40, 40, fallback: "/images/no_image.jpeg",
                                                             size:'40x40', class:"profile-thumb img-circle" %></small></a>
               <div class="balloon1-left">
                 <strong ><%= m.content %></strong>
