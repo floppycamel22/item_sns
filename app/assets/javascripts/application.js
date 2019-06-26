@@ -21,6 +21,19 @@ $(function() {
 	$('.post-list').hide().fadeIn('slow');
 });
 
+// =========================================
+
+$(function() {
+	$('.main-text').hide('slow').fadeIn('slow');
+});
+
+$(function() {
+	$('.main-title').hide('slow').fadeIn('slow');
+});
+
+// =========================================
+
+
 // 投稿のページネーション
 $(function(){
 	$("#posts").infinitescroll({

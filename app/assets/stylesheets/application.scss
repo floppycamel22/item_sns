@@ -1,0 +1,180 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+#vegas {
+    width: 100vw;
+    height: 100vh;
+}
+
+#infscr-loading {
+    text-align: center;
+}
+
+body{
+    background-color: #EEEEEE;
+}
+
+li {
+    list-style: none;
+}
+
+.modal-content {
+    position:fixed;
+    display:none;
+    z-index:2;
+    width:50%;
+    margin:0;
+    padding:10px 20px;
+    border:2px solid #aaa;
+    background:#fff;
+}
+
+.modal-content p {
+    margin:0;
+    padding:0;
+}
+
+.modal-overlay {
+    z-index:1;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:120%;
+    background-color:rgba(0,0,0,0.75);
+}
+
+.modal-open {
+    color:#fff;
+    text-decoration: none;
+}
+
+.modal-open:hover {
+    cursor:pointer;
+    color:#EEEEEE;
+}
+
+.modal-close {
+    color:#00f;
+    text-decoration:underline;
+}
+
+.modal-close:hover {
+    cursor:pointer;
+    color:#f00;
+}
+
+
+.user_content {
+    float: left;
+    margin: 10px;
+}
+
+.user_name {
+    float: left;
+    margin: 10px;
+}
+div .user_name :last-child {
+    margin: 3px 0 0 20px ;
+}
+
+.stats {
+    clear: both;
+    margin: 10px;
+}
+
+.stat {
+    margin-left: 15px;
+}
+
+.user_contact {
+    float: left;
+    margin: 25px;
+}
+
+.user-box {
+    margin-top: 100px;
+}
+
+.pagination {
+    display: none;
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.header-list li {
+    color: #fff;
+}
+
+#post_position {
+    margin-top: 12px;
+}
+
+//================================
+
+#main-visual {
+    width: 100%;
+    height: 400px;
+    background-image: url('https://cdn.pixabay.com/photo/2015/09/18/11/36/shop-945414_1280.jpg');
+    background-size: cover;
+}
+
+#main-visual::before {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 79px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+}
+
+#main-box {
+    padding-top: 40px;
+    position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.main-title {
+    font-family: 'sans-serif', 'arial';
+    text-align: center;
+    font-size: 70px;
+    color: #fff;
+    display: none;
+}
+
+.main-text {
+    color: #fff;
+    text-align: center;
+    display: none;
+}
+
+
+//===============================
+
+
