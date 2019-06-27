@@ -10,12 +10,12 @@
 
 * css
 
-*javascript
+* javascript
 
 ## 使用フレームワーク
 * rails '5.2.3'
 
-*bootstrap3
+* bootstrap3
 
 ## 追加した主なgem
 * devise
