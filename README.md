@@ -21,7 +21,7 @@
 * kaminari(ページネーション)
 * rails_admin(管理者ページ作成)
 * cancancan(管理者権限)
-* bullet(1+N問題解消)
+* bullet(1+N問題解消用のgem)
 * hirb(railsコンソール使用時に、テーブルを見やすくするgem)
 * pry-rails(hirbを使いやすくするgem)
 
