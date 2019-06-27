@@ -6,7 +6,7 @@
 ## 使用言語
 ruby '2.5.5'/html/css/javascript
 
-##　使用フレームワーク
+## 使用フレームワーク
 rails '5.2.3'/bootstrap3
 
 ## 追加した主なgem
