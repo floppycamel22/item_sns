@@ -4,36 +4,36 @@
 また、欲しいアイテムを探す時に他ユーザーの投稿を参考にでき、グループ名を決めたフォルダに投稿を保存できます。（家電フォルダ、一人暮らしに役立つフォルダ等）
 
 ## 使用言語
-*ruby '2.5.5'
+* ruby '2.5.5'
 
-*html
+* html
 
-*css
+* css
 
 *javascript
 
 ## 使用フレームワーク
-*rails '5.2.3'
+* rails '5.2.3'
 
 *bootstrap3
 
 ## 追加した主なgem
-*devise
+* devise
 
-*refile
+* refile
 
-*bootstrap-sass
+* bootstrap-sass
 
-*ransack
+* ransack
 
-*kaminari
+* kaminari
 
-*rails_admin
+* rails_admin
 
-*cancancan
+* cancancan
 
-*bullet
+* bullet
 
-*hirb
+* hirb
 
-*pry-rails
+* pry-rails
