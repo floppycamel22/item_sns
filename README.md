@@ -18,22 +18,24 @@
 * bootstrap3
 
 ## 追加した主なgem
-* devise
+* devise（ログイン機能）
 
-* refile
+* refile(画像アップロード)
 
-* bootstrap-sass
+* bootstrap-sass(cssのフレームワーク)
 
-* ransack
+* ransack(検索機能)
 
-* kaminari
+* kaminari(ページネーション)
 
-* rails_admin
+* rails_admin(管理者ページ作成)
 
-* cancancan
+* cancancan(管理者権限)
 
-* bullet
+* bullet(1+N問題解消)
 
-* hirb
+* hirb(railsコンソール使用時に、テーブルを見やすくするgem)
 
-* pry-rails
+* pry-rails(hirbを使いやすくするgem)
+
+
