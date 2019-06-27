@@ -10,4 +10,4 @@ ruby '2.5.5'/html/css/javascript
 rails '5.2.3'/bootstrap3
 
 ## 追加した主なgem
-devise/refile/bootstrap-sass/ransack/kaminari/rails_admin/cancancan/bullet/hirb/pry-rails
+devise/ refile/ bootstrap-sass/ ransack/ kaminari/ rails_admin/ cancancan/ bullet/ hirb/ pry-rails
