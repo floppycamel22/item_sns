@@ -1,24 +1,44 @@
-# README
+# Item sns application (マイテムポーチ)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ポートフォリオとして商品レビューを投稿型に変えたSNSサイトを作成。自分が購入した物やお気に入りのアイテムを投稿して紹介出来ます。
+また、欲しいアイテムを探す時に他ユーザーの投稿を参考にでき、グループ名を決めたフォルダに投稿を保存できます。（家電フォルダ、一人暮らしに役立つフォルダ等）
 
-Things you may want to cover:
+## 使用言語
+* ruby '2.5.5'
+* html
+* css
+* javascript
 
-* Ruby version
+## 使用フレームワーク
+* rails '5.2.3'
+* bootstrap3
 
-* System dependencies
+## 追加した主なgem
+* devise（ログイン機能）
+* refile(画像アップロード)
+* bootstrap-sass(cssのフレームワーク)
+* ransack(検索機能)
+* kaminari(ページネーション)
+* rails_admin(管理者ページ作成)
+* cancancan(管理者権限)
+* bullet(1+N問題解消用のgem)
+* hirb(railsコンソール使用時に、テーブルを見やすくするgem)
+* pry-rails(hirbを使いやすくするgem)
 
-* Configuration
+## 使用したプラグイン
+* Infinite Scroll（ページネーションを無限スクロールとして使用）
+* Vegas2(ログインページ、新規登録ページの背景で使われるスライド)
 
-* Database creation
+## 主なアプリケーションの機能
+* フォロー機能
+* 通知機能(いいね、コメント、フォロー、DMを送った時に相手に通知がきます)
+* フォルダー機能
+* ダイレクトメッセージ機能
 
-* Database initialization
+## 使い方
+* top画面は投稿一覧になっています。投稿一覧と詳細は遷移する事が出来ますが、それ以外はログインが必要になります。
+* ログイン後は、フォローユーザーの投稿一覧に遷移され、主にフォロー、DM、投稿へのコメント、いいね、フォルダー保存ができます。
+* フォルダー機能は自分のユーザー画面でいくつもフォルダ作成ができ、投稿詳細から『この投稿を保存』を押すとモーダルで自分のフォルダの一覧が表示されます。そこから自分の保存したいフォルダを押すと保存が完了します。
+* 通知機能は投稿にいいねやコメントを行った時、またユーザーフォロー、DMを送った時に相手に通知が送られます。受け取ったユーザーはヘッダーのユーザーボタンにアイコンが着くのですぐわかるようになり、通知ページから誰からの通知か確認ができます。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
