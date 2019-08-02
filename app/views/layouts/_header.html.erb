@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-xs-2">
 				<div id="logo">
-					<h2><%= link_to 'Mytempouch', root_path, style:"color: #fff; text-decoration: none;" %></h2>
+					<h2><%= link_to 'Mytempouch', posts_path, style:"color: #fff; text-decoration: none;" %></h2>
 				</div>
 			</div>
 			<%= render 'layouts/search' %>
@@ -17,11 +17,11 @@
 							<% end %>
 						</li>
 						<li class="header-title">
-							<%= link_to root_path, style:"text-decoration: none; color: #fff;" do %>
+							<%= link_to posts_path, style:"text-decoration: none; color: #fff;" do %>
 								<i class="fas fa-dove"></i> Post
 							<% end %>
 							<ul class="header-list">
-								<li><%= link_to 'ホーム', root_path(current_user.id),
+								<li><%= link_to 'ホーム', posts_path(current_user.id),
 														 style:"text-decoration: none; color: #fff;" %></li>
 								<li><%= link_to 'フォロー中', user_following_post_path(current_user.id),
 															style:"text-decoration: none; color: #fff;" %></li>
@@ -68,7 +68,7 @@
 				<nav>
 					<ul id="header-menu" class="nav navbar-nav navbar-right">
 						<li class="header-title">
-							<%= link_to root_path, 	style:"text-decoration: none; color: #fff;" do %>
+							<%= link_to posts_path, 	style:"text-decoration: none; color: #fff;" do %>
 								<i class="fas fa-home"></i> Home
 							<% end %>
 						</li>
@@ -78,7 +78,7 @@
 							<% end %>
 						</li>
 						<li class="header-title">
-							<%= link_to new_user_session_path, style:"text-decoration: none; color: #fff;" do %>
+							<%= link_to root_path, style:"text-decoration: none; color: #fff;" do %>
 								<i class="fas fa-sign-in-alt"></i> Sign In
 							<% end %>
 						</li>

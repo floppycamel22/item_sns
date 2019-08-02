@@ -21,8 +21,7 @@ $(function() {
 	$('.post-list').hide().fadeIn('slow');
 });
 
-// =========================================
-
+// ホームのタイトル
 $(function() {
 	$('.main-text').hide('slow').fadeIn('slow');
 });
@@ -31,7 +30,6 @@ $(function() {
 	$('.main-title').hide('slow').fadeIn('slow');
 });
 
-// =========================================
 
 
 // 投稿のページネーション
