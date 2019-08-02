@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
 			@message.create_notification_by(current_user, entry_users)
 			redirect_to "/rooms/#{@message.room_id}"
 	    else
-			redirect_back(fallback_location: root_path)
+			redirect_back(fallback_location: posts_path)
 	    end
   	end
 end

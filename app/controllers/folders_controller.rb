@@ -23,7 +23,7 @@ class FoldersController < ApplicationController
 
 	def destroy
 		@folder.destroy
-		redirect_to root_path
+		redirect_to posts_path
 	end
 
 	private

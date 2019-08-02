@@ -132,6 +132,46 @@ div .user_name :last-child {
     margin-top: 12px;
 }
 
+#main-visual {
+    width: 100%;
+    height: 400px;
+    background-image: url('https://cdn.pixabay.com/photo/2015/09/18/11/36/shop-945414_1280.jpg');
+    background-size: cover;
+}
+
+#main-visual::before {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 79px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+}
+
+#main-box {
+    padding-top: 40px;
+    position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.main-title {
+    font-family: 'sans-serif', 'arial';
+    text-align: center;
+    font-size: 70px;
+    color: #fff;
+    display: none;
+}
+
+.main-text {
+    color: #fff;
+    text-align: center;
+    display: none;
+}
+
 
 
 

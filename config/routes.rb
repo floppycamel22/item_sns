@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'posts#index'
+  # root 'posts#index' posts_path
+  devise_scope :user do
+    root :to => "devise/sessions#new"
+  end
   devise_for :users
   resources :users do
   	member do

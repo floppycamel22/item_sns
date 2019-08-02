@@ -34,13 +34,13 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post.id)
     else
-      render root_path
+      render posts_path
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   private
